@@ -41,9 +41,14 @@
       <img src="img/phonePicture.jpg" alt="phone picture" class="w3-padding" />
     </section>
 
-    <section id="formular">
+    <section id="eingabebereich">
       <!--Formular-->
-      <h2>Buchungsformular</h2>
+      <h2>Erstellen Sie jetzt ein Angebot!</h2>
+
+      <p>
+        Geben Sie untenstehend die Infos zu ihrem Smartphone ein welches Sie
+        verkaufen möchten.
+      </p>
 
       <form
         class="w3-container"
@@ -51,16 +56,13 @@
         method="post"
         onsubmit="return isValid()"
       >
-        <label>Startdatum: </label>
-        <input class="w3-input" type="date" id="dateStart" /><br />
+        <label>Kaufdatum </label>
+        <input class="w3-input" type="date" id="kaufdatum" /><br />
 
-        <label>Enddatum: </label>
-        <input class="w3-input" type="date" id="dateEnd" /><br />
-
-        <label>Name </label>
+        <label>Modellname</label>
         <input class="w3-input" type="text" id="name" /><br />
 
-        <label>E-Mail </label>
+        <label>Ihre E-Mail </label>
         <input class="w3-input" type="email" id="email" /><br />
 
         <button class="w3-button" type="submit">Senden</button>
@@ -72,21 +74,6 @@
         }
       </script>
     </section>
-    <!-- Navigation erstellen mit w3.cs-->
-
-    <!--Information: Ein Abschnitt mit Informationen zur Webapplikation und wie der Benutzer die Applikation zu bedienen hat. Dieser Abschnitt muss mindestens
-    ein Paragraphelement und ein Bildelement enthalten.-->
-
-    <!--Formular: Ein Formular mit mindestens drei Inputelementen, welche jeweils un-
-    terschiedlichen Inhalt (*) erwarten, den entsprechenden Labels und einer Sub- mit-Aktion.
-    Die Submit-Aktion des Formulars muss das serverseitige Skript auf- rufen und die Inhalte
-    aller Inputelemente an das Skript übermitteln.-->
-
-    <!-- Flexbox nutzen um es responsive zu gestaltent -->
-    <!-- so quality check symbole evt. von airbnb geklaut in einer flexbox darstellen -->
-
-    <h2>test</h2>
-    <p>hallo</p>
   </body>
 
   <footer></footer>
