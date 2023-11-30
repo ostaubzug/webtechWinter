@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.w3-mobile {
+  font-family: "Montserrat", sans-serif;
+}
+
+#navigation {
+  margin-bottom: 100px;
+}
+
+#infobox {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+#infobox div {
+  flex-basis: 50%;
+}

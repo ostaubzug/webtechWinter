@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tranquil Escape</title>
+    <link rel="stylesheet" href="mystyle.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  </head>
+
+  <body>
+    <section id="navigation">
+      <nav class="w3-dark-gray w3-mobile w3-top">
+        <a
+          href="#"
+          class="w3-bar-item w3-button w3-mobile w3-right"
+          onclick="showSection('information')"
+          >Information</a
+        >
+        <a
+          href="#"
+          class="w3-bar-item w3-button w3-mobile w3-right"
+          onclick="showSection('formular')"
+          >Formular</a
+        >
+      </nav>
+    </section>
+
+    <section id="information" class="w3-container">
+      <h1 class="w3-center">Ferien Villa Tranquil Escape</h1>
+      <p>
+        Willkommen bei "Tranquil Escape" – einer modernen Ferienvilla, die Ihnen
+        den ultimativen Rückzugsort bietet. Unser exquisit gestaltetes Haus
+        vereint luxuriöse Annehmlichkeiten mit einer idyllischen Umgebung und
+        lädt Sie ein, den Stress des Alltags hinter sich zu lassen. Mit
+        geräumigen und elegant eingerichteten Zimmern, einem atemberaubenden
+        Blick auf die umliegende Natur und einer Fülle von Annehmlichkeiten, die
+        Ihren Aufenthalt unvergesslich machen, ist "Tranquil Escape" der ideale
+        Ort, um Ruhe und Entspannung zu finden. Unsere Website bietet Ihnen eine
+        einfache Möglichkeit, Ihren Aufenthalt zu buchen. Füllen Sie einfach das
+        Buchungsformular aus, um Ihren nächsten Traumurlaub in unserer Villa zu
+        planen. Wir freuen uns darauf, Sie bei "Tranquil Escape" willkommen zu
+        heißen!
+      </p>
+      <div class="w3-row w3-center w3-margin">
+        <img
+          src="img/villa1.jpeg"
+          alt="villa1 picture"
+          class="w3-col m12 l4 villaImage w3-padding"
+        />
+        <img
+          src="img/villa2.jpeg"
+          alt="villa2 picture"
+          class="w3-col m12 l4 villaImage w3-padding"
+        />
+        <img
+          src="img/villa3.jpeg"
+          alt="villa3 picture"
+          class="w3-col m12 l4 villaImage w3-padding"
+        />
+      </div>
+
+      <div id="infobox" class="w3-margin w3-panel w3-gray">
+        <img src="img/clean.png" alt="clean description" c />
+        <img src="img/security.png" alt="clean description " />
+        <img src="img/mountain.png" alt="clean description" />
+        <img src="img/fun.png" alt="clean description" />
+      </div>
+    </section>
+
+    <section id="formular">
+      <!--Formular-->
+      <h2>Buchungsformular</h2>
+
+      <form
+        class="w3-container"
+        action=""
+        method="post"
+        onsubmit="return isValid()"
+      >
+        <label>Startdatum: </label>
+        <input class="w3-input" type="date" id="dateStart" /><br />
+
+        <label>Enddatum: </label>
+        <input class="w3-input" type="date" id="dateEnd" /><br />
+
+        <label>Name </label>
+        <input class="w3-input" type="text" id="name" /><br />
+
+        <label>E-Mail </label>
+        <input class="w3-input" type="email" id="email" /><br />
+
+        <button class="w3-button" type="submit">Senden</button>
+      </form>
+
+      <script>
+        function isValid() {
+          return true;
+        }
+      </script>
+    </section>
+    <!-- Navigation erstellen mit w3.cs-->
+
+    <!--Information: Ein Abschnitt mit Informationen zur Webapplikation und wie der Benutzer die Applikation zu bedienen hat. Dieser Abschnitt muss mindestens
+    ein Paragraphelement und ein Bildelement enthalten.-->
+
+    <!--Formular: Ein Formular mit mindestens drei Inputelementen, welche jeweils un-
+    terschiedlichen Inhalt (*) erwarten, den entsprechenden Labels und einer Sub- mit-Aktion.
+    Die Submit-Aktion des Formulars muss das serverseitige Skript auf- rufen und die Inhalte
+    aller Inputelemente an das Skript übermitteln.-->
+
+    <!-- Flexbox nutzen um es responsive zu gestaltent -->
+    <!-- so quality check symbole evt. von airbnb geklaut in einer flexbox darstellen -->
+
+    <h2>test</h2>
+    <p>hallo</p>
+  </body>
+
+  <footer></footer>
+</html>
