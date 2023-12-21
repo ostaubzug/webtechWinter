@@ -7,37 +7,35 @@ parse_str($_SERVER['QUERY_STRING'], $params);
 
 // Check if it's a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo json_encode("post erkannt");
-    // Get the POST data
     $postData = file_get_contents('php://input');
     $postData = json_decode($postData, true);
+    //todo Validierung
+    returnMessage($postData);
 
-    // Check if the 'name' parameter is set in the POST data
-    if (isset($postData['phonemodel']) && $postData['phonemodel'] != '') {
-        // Produce result
-        $result['message'] = 'Backend funktioniert mit post' . $postData['phonemodel'];
-    } else {
-        $result['error'] = 'Parameter <name> is not set or empty';
-        http_response_code(400);
-    }
+
 } else {
     $result['error'] = 'Invalid request method';
     http_response_code(405);
 }
 
-echo json_encode($result);
-
-function calculatePrice($postData)
+function returnMessage($postData)
 {
     $phonemodel = $postData['phonemodel'];
     $datetime = $postData['datetime'];
     $email = $postData['email'];
 
+    $price = calculatePrice($phonemodel, $datetime);
+    $message = "Gratulation! Ihr Handy ist noch $price CHF wert. \n Wir werden Sie unter $email kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.";
 
-    // TODO: Implement the function logic here
+    echo json_encode($message);
 }
 
-function getPhoneValueChf($phonemodel)
+function calculatePrice($phonemodel, $datetime)
+{
+    return getPhoneModelValueChf($phonemodel) * getDeprecationFactor($datetime);
+}
+
+function getPhoneModelValueChf($phonemodel)
 {
     $value = [
         1 => 500,
@@ -45,28 +43,31 @@ function getPhoneValueChf($phonemodel)
         3 => 300,
         4 => 200,
         5 => 600,
-        //todo Validierung
     ];
+}
 
-    // Check if the key exists in the lookup array
-    if (array_key_exists($value, $phonemodel)) {
-        return $value[$phonemodel];
+function getDeprecationFactor($datetime)
+{
+    $age = getAge($datetime);
+    if ($age >= 0 && $age <= 3) {
+        return 0.9;
+    } elseif ($age > 3 && $age <= 5) {
+        return 0.8;
     } else {
-        return 'Key not found'; // Or handle the error as appropriate
+        return 0.3;
     }
+
+}
+
+function getAge($datetime)
+{
+    $birthDate = new DateTime($datetime);
+    $currentDate = new DateTime('now');
+    return $birthDate->diff($currentDate);
 }
 
 function validateInput()
 {
-} {
-    $name = $postData['name'];
-    $datetime = $postData['datetime'];
-    $email = $postData['email'];
-
-
-
-
-
     // TODO: Implement the function logic here
 }
 
