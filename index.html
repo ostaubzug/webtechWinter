@@ -32,13 +32,17 @@
       </nav>
     </section>
 
-    <section id="information" class="w3-container">
+    <section id="information" class="w3-container w3-mobile">
       <h1 class="w3-center">Phone Shop</h1>
       <p>
         Hier kannst du ganz einfach den Wert von deinem alten Smartphone
         herausfinden
       </p>
-      <img src="img/phonePicture.jpg" alt="phone picture" class="w3-padding" />
+      <img
+        src="img/phonePicture.jpg"
+        alt="phone picture"
+        class="w3-padding w3-mobile"
+      />
     </section>
 
     <section id="eingabebereich">
@@ -51,21 +55,21 @@
       </p>
 
       <form
-        class="w3-container"
+        class="w3-container w3-mobile"
         action=""
         method="post"
         onsubmit="return isValid()"
       >
-        <label>Kaufdatum </label>
-        <input class="w3-input" type="date" id="kaufdatum" /><br />
+        <label class="w3-mobile">Kaufdatum</label>
+        <input class="w3-input w3-mobile" type="date" id="kaufdatum" /><br />
 
-        <label>Modellname</label>
-        <input class="w3-input" type="text" id="name" /><br />
+        <label>Name des phones</label>
+        <input class="w3-input w3-mobile" type="text" id="name" /><br />
 
-        <label>Ihre E-Mail </label>
-        <input class="w3-input" type="email" id="email" /><br />
+        <label>Ihre E-Mail</label>
+        <input class="w3-input w3-mobile" type="email" id="email" /><br />
 
-        <button class="w3-button" type="submit">Senden</button>
+        <button class="w3-button w3-mobile" type="submit">Senden</button>
       </form>
 
       <script>

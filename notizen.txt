@@ -4,3 +4,7 @@ Themenideen.
     - Smartphone Händler.
     - unten kann man evt. ein Handy gewinnen oder shop
     - oder nachfragen wie viel das eigene Handy noch wert ist. evt. noch besser
+
+
+
+html validator

@@ -5,6 +5,37 @@ img {
   width: 30%;
 }
 
+body {
+  padding-top: 50px;
+}
+
 #navigation {
   margin-bottom: 60px;
+}
+
+#information {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#information h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+#information p {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#information img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
 }
