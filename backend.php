@@ -29,6 +29,12 @@ echo json_encode($result);
 
 function calculatePrice()
 {
+    $name = $postData['name'];
+    $datetime = $postData['datetime'];
+    $email = $postData['email'];
+
+
+
     // TODO: Implement the function logic here
 }
 
