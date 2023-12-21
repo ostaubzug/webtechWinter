@@ -6,6 +6,7 @@ Themenideen.
     - oder nachfragen wie viel das eigene Handy noch wert ist. evt. noch besser
 
 
+- Was haben wir im Unterricht zum Thema responsive angeschaut
 
 html validator
 
@@ -23,3 +24,4 @@ Ein cookie definieren das die Veränderung vom Preis verglichen mit dem letzten 
 Überall eine Eingabeprüfung durchführen
 
 Ajax Fehlerbehandlung wie in den Folien beschrieben
+Unterschied Get Post und so

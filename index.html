@@ -65,7 +65,13 @@
         <label>Ihre E-Mail</label>
         <input class="w3-input w3-mobile" type="email" id="email" /><br />
 
-        <button class="w3-button w3-mobile" type="submit">Senden</button>
+        <button
+          onclick="getServerResponse()"
+          class="w3-button w3-mobile"
+          type="submit"
+        >
+          Senden
+        </button>
       </form>
     </section>
 
@@ -75,20 +81,13 @@
       <p id="output"></p>
 
       <script>
-        xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-          let output = document.getElementById("output");
-          output.innerText = xhr.responseText;
-        };
-        xhr.open("GET", "hello.txt", true);
-        xhr.send();
-      </script>
-      <script>
-        function send() {
+        function getServerResponse() {
           let xhr = new XMLHttpRequest();
-          let name = document.getElementById("name");
-          let queryString = "name=" + name.value;
-          xhr.open("GET", "backend_hello.php?" + queryString, true);
+          xhr.onload = function () {
+            let output = document.getElementById("output");
+            output.innerText = xhr.responseText;
+          };
+          xhr.open("GET", "backend.php?", true);
         }
       </script>
     </section>
