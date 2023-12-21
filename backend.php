@@ -46,6 +46,7 @@ function getPhoneModelValueChf($phonemodel)
 function getDeprecationFactor($datetime)
 {
     $age = getAge($datetime);
+    echo $age->y;
     if ($age >= 0 && $age <= 3) {
         return 0.9;
     } elseif ($age > 3 && $age <= 5) {
