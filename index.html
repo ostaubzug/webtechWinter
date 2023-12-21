@@ -92,10 +92,10 @@
             output.innerText = xhr.responseText;
           };
           xhr.open("POST", "backend.php", true);
-          xhr.setRequestHeader("Content-Type", "application/json"); // Set the content type to JSON
+          xhr.setRequestHeader("Content-Type", "application/json");
           xhr.send(
             JSON.stringify({ name: name, email: email, kaufdatum: kaufdatum })
-          ); // Send the data as JSON string
+          );
         }
       </script>
     </section>

@@ -10,9 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode("post erkannt");
     // Get the POST data
     $postData = file_get_contents('php://input');
-    echo ($postData);
     $postData = json_decode($postData, true);
-
 
     // Check if the 'name' parameter is set in the POST data
     if (isset($postData['name']) && $postData['name'] != '') {
@@ -28,4 +26,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 echo json_encode($result);
+
+function calculatePrice()
+{
+    // TODO: Implement the function logic here
+}
+
+function validateInput()
+{
+}
+
+
+
 ?>
