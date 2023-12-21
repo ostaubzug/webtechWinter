@@ -66,7 +66,7 @@
         <input class="w3-input w3-mobile" type="email" id="email" /><br />
 
         <button
-          onclick="getServerResponse()"
+          onclick="event.preventDefault(); getServerResponse()"
           class="w3-button w3-mobile"
           type="submit"
         >
@@ -78,16 +78,18 @@
     <section id="ausgabebereich" class="w3-container w3-mobile">
       <p>Hier wird die Ausgabe angezeigt</p>
 
-      <p id="output"></p>
+      <p id="output">das ist der output</p>
 
       <script>
         function getServerResponse() {
+          let name = "randomName";
           let xhr = new XMLHttpRequest();
           xhr.onload = function () {
             let output = document.getElementById("output");
             output.innerText = xhr.responseText;
           };
-          xhr.open("GET", "backend.php?", true);
+          xhr.open("GET", "backend.php?name=" + encodeURIComponent(name), true);
+          xhr.send();
         }
       </script>
     </section>

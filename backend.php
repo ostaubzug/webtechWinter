@@ -1,4 +1,9 @@
 <?php
+header("Access-Control-Allow-Origin: *"); // Allows all origins
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+
 
 parse_str($_SERVER['QUERY_STRING'], $params);
 
