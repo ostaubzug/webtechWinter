@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $postData = json_decode($postData, true);
 
     // Check if the 'name' parameter is set in the POST data
-    if (isset($postData['name']) && $postData['name'] != '') {
+    if (isset($postData['phonemodel']) && $postData['phonemodel'] != '') {
         // Produce result
-        $result['message'] = 'Backend funktioniert mit post' . $postData['name'];
+        $result['message'] = 'Backend funktioniert mit post' . $postData['phonemodel'];
     } else {
         $result['error'] = 'Parameter <name> is not set or empty';
         http_response_code(400);
@@ -27,21 +27,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 echo json_encode($result);
 
-function calculatePrice()
+function calculatePrice($postData)
 {
+    $phonemodel = $postData['phonemodel'];
+    $datetime = $postData['datetime'];
+    $email = $postData['email'];
+
+
+    // TODO: Implement the function logic here
+}
+
+function getPhoneValueChf($phonemodel)
+{
+    $value = [
+        1 => 500,
+        2 => 400,
+        3 => 300,
+        4 => 200,
+        5 => 600,
+        //todo Validierung
+    ];
+
+    // Check if the key exists in the lookup array
+    if (array_key_exists($value, $phonemodel)) {
+        return $value[$phonemodel];
+    } else {
+        return 'Key not found'; // Or handle the error as appropriate
+    }
+}
+
+function validateInput()
+{
+} {
     $name = $postData['name'];
     $datetime = $postData['datetime'];
     $email = $postData['email'];
 
 
 
+
+
     // TODO: Implement the function logic here
 }
-
-function validateInput()
-{
-}
-
 
 
 ?>
