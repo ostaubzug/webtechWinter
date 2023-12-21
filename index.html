@@ -82,14 +82,20 @@
 
       <script>
         function getServerResponse() {
-          let name = "randomName";
+          let name = document.getElementById("name").value;
+          let email = document.getElementById("email").value;
+          let kaufdatum = document.getElementById("kaufdatum").value;
+
           let xhr = new XMLHttpRequest();
           xhr.onload = function () {
             let output = document.getElementById("output");
             output.innerText = xhr.responseText;
           };
-          xhr.open("GET", "backend.php?name=" + encodeURIComponent(name), true);
-          xhr.send();
+          xhr.open("POST", "backend.php", true);
+          xhr.setRequestHeader("Content-Type", "application/json"); // Set the content type to JSON
+          xhr.send(
+            JSON.stringify({ name: name, email: email, kaufdatum: kaufdatum })
+          ); // Send the data as JSON string
         }
       </script>
     </section>
