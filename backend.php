@@ -1,22 +1,17 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Allows all origins
+//acces probleme, deshalb lasse ich alle Verbindungen zu, das Sicherheitsrisiko ist mir bewusst
+header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
 parse_str($_SERVER['QUERY_STRING'], $params);
+$postData = file_get_contents('php://input');
+$postData = json_decode($postData, true);
 
-// Check if it's a POST request
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $postData = file_get_contents('php://input');
-    $postData = json_decode($postData, true);
-    //todo Validierung
-    returnMessage($postData);
+//todo Validierung
+returnMessage($postData);
 
 
-} else {
-    $result['error'] = 'Invalid request method';
-    http_response_code(405);
-}
 
 function returnMessage($postData)
 {
@@ -38,12 +33,14 @@ function calculatePrice($phonemodel, $datetime)
 function getPhoneModelValueChf($phonemodel)
 {
     $value = [
-        1 => 500,
-        2 => 400,
-        3 => 300,
-        4 => 200,
-        5 => 600,
+        'iPhone 13' => 500,
+        'iPhone 12' => 400,
+        'iPhone 11' => 300,
+        'Samsung A4' => 200,
+        'Pixel 8' => 320,
+        'Pixel 8pro' => 600,
     ];
+    return $value[$phonemodel];
 }
 
 function getDeprecationFactor($datetime)
@@ -56,7 +53,6 @@ function getDeprecationFactor($datetime)
     } else {
         return 0.3;
     }
-
 }
 
 function getAge($datetime)
