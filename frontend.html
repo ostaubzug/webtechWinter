@@ -71,10 +71,28 @@
 
         <button class="w3-button w3-mobile" type="submit">Senden</button>
       </form>
+    </section>
+
+    <section id="ausgabebereich" class="w3-container w3-mobile">
+      <p>Hier wird die Ausgabe angezeigt</p>
+
+      <p id="output"></p>
 
       <script>
-        function isValid() {
-          return true;
+        xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+          let output = document.getElementById("output");
+          output.innerText = xhr.responseText;
+        };
+        xhr.open("GET", "hello.txt", true);
+        xhr.send();
+      </script>
+      <script>
+        function send() {
+          let xhr = new XMLHttpRequest();
+          let name = document.getElementById("name");
+          let queryString = "name=" + name.value;
+          xhr.open("GET", "backend_hello.php?" + queryString, true);
         }
       </script>
     </section>

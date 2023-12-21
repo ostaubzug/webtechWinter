@@ -8,3 +8,18 @@ Themenideen.
 
 
 html validator
+
+
+
+dropdown um das handy modell auswählen zu können -> einfachere Validierung etc.
+Das Phone kann ein maximales Alter haben danach ist es zu alt vermutlich
+dropdown um den Hersteller auszuwählen
+
+Error Handler setzen und so
+
+Ein cookie definieren das die Veränderung vom Preis verglichen mit dem letzten Mal anzeigt.
+
+
+Überall eine Eingabeprüfung durchführen
+
+Ajax Fehlerbehandlung wie in den Folien beschrieben
