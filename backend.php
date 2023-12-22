@@ -45,8 +45,7 @@ function getPhoneModelValueChf($phonemodel)
 
 function getDeprecationFactor($datetime)
 {
-    $age = getAge($datetime);
-    echo $age->y;
+    $age = getAgeInYears($datetime);
     if ($age >= 0 && $age <= 3) {
         return 0.9;
     } elseif ($age > 3 && $age <= 5) {
@@ -56,11 +55,12 @@ function getDeprecationFactor($datetime)
     }
 }
 
-function getAge($datetime)
+function getAgeInYears($datetime)
 {
     $birthDate = new DateTime($datetime);
     $currentDate = new DateTime('now');
-    return $birthDate->diff($currentDate);
+    $age = $birthDate->diff($currentDate);
+    return $age->y;
 }
 
 function validateInput()
