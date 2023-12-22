@@ -15,22 +15,19 @@ returnMessage($postData);
 
 function returnMessage($postData)
 {
-    $phonemodel = $postData['phonemodel'];
-    $datetime = $postData['datetime'];
     $email = $postData['email'];
+    $value = calculateValue($postData['phonemodel'], $postData['datetime']);
 
-    $price = calculatePrice($phonemodel, $datetime);
-    $message = "Gratulation! Ihr Handy ist noch $price CHF wert. \n Wir werden Sie unter $email kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.";
-
-    echo json_encode($message);
+    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.';
+    echo json_encode($message, JSON_UNESCAPED_UNICODE);
 }
 
-function calculatePrice($phonemodel, $datetime)
+function calculateValue($phonemodel, $datetime)
 {
-    return getPhoneModelValueChf($phonemodel) * getDeprecationFactor($datetime);
+    return getPhoneModelPriceChf($phonemodel) * getDeprecationFactor($datetime);
 }
 
-function getPhoneModelValueChf($phonemodel)
+function getPhoneModelPriceChf($phonemodel)
 {
     $value = [
         'iPhone 13' => 500,

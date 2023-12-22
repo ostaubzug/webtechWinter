@@ -74,17 +74,15 @@
 
         <button
           onclick="event.preventDefault(); getServerResponse()"
-          class="w3-button w3-mobile"
+          class="w3-button w3-mobile w3-blue"
           type="submit"
         >
           Senden
         </button>
       </form>
     </section>
-
-    <section id="ausgabebereich" class="w3-container w3-mobile">
+    <section class="w3-mobile">
       <p>Hier wird die Ausgabe angezeigt</p>
-
       <p id="output">das ist der output</p>
 
       <script>
@@ -96,7 +94,7 @@
           let xhr = new XMLHttpRequest();
           xhr.onload = function () {
             let output = document.getElementById("output");
-            output.innerText = xhr.responseText;
+            output.innerHTML = xhr.responseText;
           };
           xhr.open("POST", "backend.php", true);
           xhr.setRequestHeader("Content-Type", "application/json");
