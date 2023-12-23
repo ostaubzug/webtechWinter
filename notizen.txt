@@ -25,3 +25,18 @@ Ein cookie definieren das die Veränderung vom Preis verglichen mit dem letzten 
 
 Ajax Fehlerbehandlung wie in den Folien beschrieben
 Unterschied Get Post und so
+
+
+Eingabeprüfung ist auch für cookies relevant
+
+
+
+Formular Beispiele schon vorausfüllen
+
+Container mit schatten hinterlegen für design. Allgemein w3.css überall implementieren. W3.css mobile tutorial anschauen
+ausgabe eigener optischer container.
+
+für mobile evt. noch mehr distinction erzeugen mit einem anderen design
+
+
+Canvas gibt 4 Punkte, muss ich noch gut machen.

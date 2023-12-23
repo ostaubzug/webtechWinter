@@ -9,17 +9,29 @@ $postData = file_get_contents('php://input');
 $postData = json_decode($postData, true);
 
 //todo Validierung
-returnMessage($postData);
 
+
+returnMessage($postData);
 
 
 function returnMessage($postData)
 {
     $email = $postData['email'];
     $value = calculateValue($postData['phonemodel'], $postData['datetime']);
+    $numberOfRequests = getCookieValue();
 
-    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.';
+    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br> Sie haben heute ' . $numberOfRequests . ' Anfragen gestellt.';
     echo json_encode($message, JSON_UNESCAPED_UNICODE);
+}
+
+function getCookieValue()
+{
+    if (isset($_COOKIE['phoneCalculatorCookie'])) {
+        setcookie('phoneCalculatorCookie', $_COOKIE['phoneCalculatorCookie'] + 1);
+        return $_COOKIE['phoneCalculatorCookie'];
+    }
+    setcookie('phoneCalculatorCookie', 1);
+    return 1;
 }
 
 function calculateValue($phonemodel, $datetime)
