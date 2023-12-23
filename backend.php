@@ -10,33 +10,25 @@ $postData = json_decode($postData, true);
 
 //todo Validierung
 
+//todo refactoring vom Code
 
-returnMessage($postData);
+
+sendMessageToFrontend($postData);
 
 
-function returnMessage($postData)
+function sendMessageToFrontend($postData)
 {
-    $email = $postData['email'];
-    $value = calculateValue($postData['phonemodel'], $postData['datetime']);
-    $numberOfRequests = getCookieValue();
-
-    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br> Sie haben heute ' . $numberOfRequests . ' Anfragen gestellt.';
+    $message = getMessage($postData);
     echo json_encode($message, JSON_UNESCAPED_UNICODE);
 }
 
-function getCookieValue()
+function getMessage($postData)
 {
-    if (isset($_COOKIE['phoneCalculatorCookie'])) {
-        setcookie('phoneCalculatorCookie', $_COOKIE['phoneCalculatorCookie'] + 1);
-        return $_COOKIE['phoneCalculatorCookie'];
-    }
-    setcookie('phoneCalculatorCookie', 1);
-    return 1;
-}
-
-function calculateValue($phonemodel, $datetime)
-{
-    return getPhoneModelPriceChf($phonemodel) * getDeprecationFactor($datetime);
+    $email = $postData['email'];
+    $value = getPhoneModelPriceChf($postData['phonemodel']) * getDeprecationFactor($postData['datetime']);
+    $numberOfRequests = getNumberOfRequests();
+    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br> Sie haben heute ' . $numberOfRequests . ' Anfragen gestellt.';
+    return $message;
 }
 
 function getPhoneModelPriceChf($phonemodel)
@@ -63,6 +55,18 @@ function getDeprecationFactor($datetime)
         return 0.3;
     }
 }
+
+
+function getNumberOfRequests()
+{
+    if (isset($_COOKIE['phoneCalculatorCookie'])) {
+        setcookie('phoneCalculatorCookie', $_COOKIE['phoneCalculatorCookie'] + 1);
+        return $_COOKIE['phoneCalculatorCookie'];
+    }
+    setcookie('phoneCalculatorCookie', 1);
+    return 1;
+}
+
 
 function getAgeInYears($datetime)
 {
