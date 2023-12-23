@@ -55,38 +55,48 @@
         method="post"
         onsubmit="return isValid()"
       >
-        <label class="w3-mobile">Kaufdatum</label>
-        <input class="w3-input w3-mobile" type="date" id="kaufdatum" /><br />
+        <div class="w3-margin-top w3-margin-bottom">
+          <label class="w3-mobile">Kaufdatum</label>
+          <input
+            class="w3-input w3-mobile w3-margin-top"
+            type="date"
+            id="kaufdatum"
+          />
+        </div>
 
-        <label class="w3-mobile">Modell des phones</label>
-        <select
-          class="w3-select w3-mobile"
-          id="phonemodel"
-          style="width: fit-content"
-        >
-          <option value="iPhone 13">iPhone 13</option>
-          <option value="iPhone 12">iPhone 12</option>
-          <option value="iPhone 11">iPhone 11</option>
-          <option value="Samsung A4">Samsung A4</option>
-          <option value="Pixel 8">Pixel 8</option>
-          <option value="Pixel 8pro">Pixel 8pro</option></select
-        ><br />
+        <div class="w3-margin-top w3-margin-bottom">
+          <label class="w3-mobile w3-margin-top">Modell des phones</label>
+          <select
+            class="w3-select w3-mobile"
+            id="phonemodel"
+            style="width: fit-content"
+          >
+            <option value="iPhone 13">iPhone 13</option>
+            <option value="iPhone 12">iPhone 12</option>
+            <option value="iPhone 11">iPhone 11</option>
+            <option value="Samsung A4">Samsung A4</option>
+            <option value="Pixel 8">Pixel 8</option>
+            <option value="Pixel 8pro">Pixel 8pro</option></select
+          ><br />
+        </div>
 
-        <label>Ihre E-Mail</label>
-        <input class="w3-input w3-mobile" type="email" id="email" /><br />
+        <div class="w3-margin-top w3-margin-bottom">
+          <label class="w3-mobile">Ihre E-Mail</label>
+          <input class="w3-input w3-mobile" type="email" id="email" /><br />
+        </div>
 
         <button
           onclick="event.preventDefault(); displayServerResponse()"
-          class="w3-button w3-mobile w3-blue"
+          class="w3-button w3-mobile w3-blue w3-margin-bottom"
           type="submit"
         >
           Senden
         </button>
       </form>
     </section>
-    <section class="w3-mobile w3-container w3-margin">
-      <p>Hier wird die Ausgabe angezeigt</p>
-      <p id="output">das ist der output</p>
+
+    <section class="w3-mobile w3-container w3-margin w3-card">
+      <p id="output"></p>
 
       <script src="js/response.js">
         displayServerResponse();
