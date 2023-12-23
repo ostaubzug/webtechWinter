@@ -69,12 +69,14 @@ function getNumberOfRequestsPerMail($email)
 {
     //dots in the cookieName are making problems So I remove them
     $sanitizedEmail = str_replace(".", "", $email);
-    if (isset($_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail])) {
-        $newValue = $_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail] + 1;
-        setcookie('NumberOfRequestsCookie' . $sanitizedEmail, $newValue);
-        return $_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail];
+    $name = 'NumberOfRequestsCookie' . $sanitizedEmail;
+
+    if (isset($_COOKIE[$name])) {
+        $increasedValue = $_COOKIE[$name] + 1;
+        setcookie($name, $increasedValue);
+        return $increasedValue;
     }
-    setcookie('NumberOfRequestsCookie' . $sanitizedEmail, 1);
+    setcookie($name, 1);
     return 1;
 }
 
