@@ -67,11 +67,14 @@ function getDeprecationFactor($datetime)
 
 function getNumberOfRequestsPerMail($email)
 {
-    if (isset($_COOKIE['NumberOfRequestsCookie' . $email])) {
-        setcookie('NumberOfRequestsCookie' . $email, $_COOKIE['NumberOfRequestsCookie' . $email] + 1);
-        return $_COOKIE['NumberOfRequestsCookie' . $email];
+    //dots in the cookieName are making problems So I remove them
+    $sanitizedEmail = str_replace(".", "", $email);
+    if (isset($_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail])) {
+        $newValue = $_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail] + 1;
+        setcookie('NumberOfRequestsCookie' . $sanitizedEmail, $newValue);
+        return $_COOKIE['NumberOfRequestsCookie' . $sanitizedEmail];
     }
-    setcookie('NumberOfRequestsCookie' . $email, 1);
+    setcookie('NumberOfRequestsCookie' . $sanitizedEmail, 1);
     return 1;
 }
 
