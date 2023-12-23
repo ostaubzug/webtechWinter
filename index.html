@@ -73,7 +73,7 @@
         <input class="w3-input w3-mobile" type="email" id="email" /><br />
 
         <button
-          onclick="event.preventDefault(); getServerResponse()"
+          onclick="event.preventDefault(); displayServerResponse()"
           class="w3-button w3-mobile w3-blue"
           type="submit"
         >
@@ -81,31 +81,12 @@
         </button>
       </form>
     </section>
-    <section class="w3-mobile">
+    <section class="w3-mobile w3-container w3-margin">
       <p>Hier wird die Ausgabe angezeigt</p>
       <p id="output">das ist der output</p>
 
-      <script>
-        function getServerResponse() {
-          let phonemodel = document.getElementById("phonemodel").value;
-          let email = document.getElementById("email").value;
-          let kaufdatum = document.getElementById("kaufdatum").value;
-
-          let xhr = new XMLHttpRequest();
-          xhr.onload = function () {
-            let output = document.getElementById("output");
-            output.innerHTML = xhr.responseText;
-          };
-          xhr.open("POST", "backend.php", true);
-          xhr.setRequestHeader("Content-Type", "application/json");
-          xhr.send(
-            JSON.stringify({
-              phonemodel: phonemodel,
-              email: email,
-              datetime: kaufdatum,
-            })
-          );
-        }
+      <script src="js/response.js">
+        displayServerResponse();
       </script>
     </section>
   </body>

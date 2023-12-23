@@ -2,33 +2,41 @@
 //acces probleme, deshalb lasse ich alle Verbindungen zu, das Sicherheitsrisiko ist mir bewusst
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Methods: POST");
 
-parse_str($_SERVER['QUERY_STRING'], $params);
-$postData = file_get_contents('php://input');
-$postData = json_decode($postData, true);
 
 //todo Validierung
 
-//todo refactoring vom Code
+processRequest();
 
 
-sendMessageToFrontend($postData);
-
-
-function sendMessageToFrontend($postData)
+function processRequest()
 {
-    $message = getMessage($postData);
-    echo json_encode($message, JSON_UNESCAPED_UNICODE);
+    parse_str($_SERVER['QUERY_STRING'], $params);
+    $postData = json_decode(file_get_contents('php://input'), true);
+
+    sendpersonalisedOffer($postData);
+
+    echo getResponseJson($postData);
 }
 
-function getMessage($postData)
+function sendpersonalisedOffer($postData)
+{
+    //personalisiertes Angebot an Mail Adresse senden.
+}
+
+
+function getResponseJson($postData)
 {
     $email = $postData['email'];
     $value = getPhoneModelPriceChf($postData['phonemodel']) * getDeprecationFactor($postData['datetime']);
-    $numberOfRequests = getNumberOfRequests();
-    $message = 'Gratulation! Ihr Handy ist noch ' . $value . ' CHF wert.<br>Wir werden Sie unter ' . $email . ' kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br> Sie haben heute ' . $numberOfRequests . ' Anfragen gestellt.';
-    return $message;
+
+    $returnObject = [
+        'email' => $email,
+        'phoneValue' => $value,
+        'numberOfRequests' => getNumberOfRequestsPerMail($email)];
+
+    return json_encode($returnObject, JSON_UNESCAPED_UNICODE);
 }
 
 function getPhoneModelPriceChf($phonemodel)
@@ -57,13 +65,13 @@ function getDeprecationFactor($datetime)
 }
 
 
-function getNumberOfRequests()
+function getNumberOfRequestsPerMail($email)
 {
-    if (isset($_COOKIE['phoneCalculatorCookie'])) {
-        setcookie('phoneCalculatorCookie', $_COOKIE['phoneCalculatorCookie'] + 1);
-        return $_COOKIE['phoneCalculatorCookie'];
+    if (isset($_COOKIE['NumberOfRequestsCookie' . $email])) {
+        setcookie('NumberOfRequestsCookie' . $email, $_COOKIE['NumberOfRequestsCookie' . $email] + 1);
+        return $_COOKIE['NumberOfRequestsCookie' . $email];
     }
-    setcookie('phoneCalculatorCookie', 1);
+    setcookie('NumberOfRequestsCookie' . $email, 1);
     return 1;
 }
 
@@ -74,11 +82,6 @@ function getAgeInYears($datetime)
     $currentDate = new DateTime('now');
     $age = $birthDate->diff($currentDate);
     return $age->y;
-}
-
-function validateInput()
-{
-    // TODO: Implement the function logic here
 }
 
 

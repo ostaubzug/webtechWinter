@@ -40,3 +40,15 @@ für mobile evt. noch mehr distinction erzeugen mit einem anderen design
 
 
 Canvas gibt 4 Punkte, muss ich noch gut machen.
+
+
+Wenn das Frontend das Json zurücknimmt muss auch eine Validierung stattfinden
+
+Frontend Javascript in eigene Js Dateien auslagern !
+
+
+Valiedierung und Fehlerhandling durchführen
+
+
+
+Validierung ist im Frontend dokuemnt beschrieben lektionsfolien 
