@@ -9,6 +9,10 @@ body {
   padding-top: 50px;
 }
 
+.w3-card {
+  width: 50%;
+}
+
 #navigation {
   margin-bottom: 60px;
 }

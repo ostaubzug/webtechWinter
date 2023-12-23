@@ -55,3 +55,5 @@ Validierung ist im Frontend dokuemnt beschrieben lektionsfolien
 
 
 Die wcag Richtlinien unbedingt auch einhalten!!
+
+Die Breite vom Formular anpassen
