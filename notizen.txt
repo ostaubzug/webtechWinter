@@ -52,3 +52,6 @@ Valiedierung und Fehlerhandling durchführen
 
 
 Validierung ist im Frontend dokuemnt beschrieben lektionsfolien 
+
+
+Die wcag Richtlinien unbedingt auch einhalten!!
