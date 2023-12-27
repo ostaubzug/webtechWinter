@@ -12,6 +12,16 @@ function displayServerResponse() {
     }
   };
 
+  xhr.onerror = function () {
+    document.getElementById("output").innerText =
+      "Ein Fehler ist aufgetreten. Bitte versuchen Sie es später noch einmal.";
+  };
+
+  xhr.ontimeout = function () {
+    document.getElementById("output").innerText =
+      "Die Anfrage ist abgelaufen. Bitte versuchen Sie es später noch einmal.";
+  };
+
   xhr.open("POST", "backend.php?function=processRequest", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(getJSONSendObject());

@@ -10,15 +10,18 @@ processRequest();
 
 function processRequest()
 {
-    parse_str($_SERVER['QUERY_STRING'], $params);
-    $postData = json_decode(file_get_contents('php://input'), true);
+    try {
+        parse_str($_SERVER['QUERY_STRING'], $params);
+        $postData = json_decode(file_get_contents('php://input'), true);
+    } catch (e) {
+        echo json_encode(['error' => "Fehler beim parsen des JSON"]);
+    }
+
 
     if (validateInput($postData)) {
         sendpersonalisedOffer($postData);
         echo getJsonResponse($postData);
     }
-
-
 }
 
 
