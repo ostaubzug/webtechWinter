@@ -7,8 +7,6 @@ function displayServerResponse() {
     htmlOutput.innerHTML = getResponseMessage(responseData);
   };
 
-  validate();
-
   xhr.open("POST", "backend.php?function=processRequest", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(getJSONSendObject());

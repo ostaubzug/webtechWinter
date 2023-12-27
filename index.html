@@ -103,7 +103,7 @@
             id="name"
             placeholder="Max Muster"
             required
-            maxlength="15"
+            maxlength="20"
             minlength="5"
           />
           <p id="errorName" class="error"></p>
@@ -124,7 +124,7 @@
         </div>
 
         <button
-          onclick="event.preventDefault(); displayServerResponse()"
+          onclick="event.preventDefault(); validateAndSend()"
           class="w3-button w3-mobile w3-blue w3-margin-bottom"
           type="submit"
         >
@@ -136,10 +136,14 @@
     <section class="w3-mobile w3-container w3-margin w3-card">
       <p id="output"></p>
 
-      <script src="js/validation.js"></script>
       <script src="js/response.js"></script>
+      <script src="js/validation.js"></script>
       <script>
-        displayServerResponse();
+        function validateAndSend() {
+          if (isInputValid()) {
+            displayServerResponse();
+          }
+        }
       </script>
     </section>
   </body>

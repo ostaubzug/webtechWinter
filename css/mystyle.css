@@ -29,3 +29,8 @@ p {
   margin: 0 auto;
   border-radius: 5px;
 }
+
+.error {
+  color: red;
+  font-weight: bold;
+}

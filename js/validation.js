@@ -1,12 +1,20 @@
-function validate() {
+let customerName = document.getElementById("name");
+let email = document.getElementById("email");
+
+let errorDate = document.getElementById("errorDate");
+let errorModel = document.getElementById("errorModel");
+let errorName = document.getElementById("errorName");
+let errorEmail = document.getElementById("errorMail");
+
+function isInputValid() {
   clearAllValidationErrors();
-  validateDate();
-  validatePhoneModel();
-  validateName();
   validateEmail();
+  validateName();
+
   if (!hasValidationErrors()) {
-    /* proceed, e.g. send data */
+    return true;
   }
+  return false;
 }
 
 function clearAllValidationErrors() {
@@ -16,21 +24,23 @@ function clearAllValidationErrors() {
   errorEmail.innerText = "";
 }
 
-function validateEmail() {
-  let email = document.getElementById("email").value;
-  let errorEmail = document.getElementById("errorMail");
-  if (!email.checkValidity()) {
-    errorEmail.innerText = email.validationMessage;
-  }
-  if (email.valueMissing) {
-    errorEmail.innerText = email.validationMessage;
-  }
+function validatePhoneModel() {}
 
-  //   if (email == "") {
-  //     errorEmail.innerText = "Bitte geben Sie eine Email Adresse ein.";
-  //   } else if (!validateEmailFormat(email)) {
-  //     errorEmail.innerText = "Bitte geben Sie eine gültige Email Adresse ein.";
-  //   }
+function validateName() {
+  if (customerName.value.length < 5 || customerName.value.length > 20) {
+    errorName.innerText =
+      "Geben Sie einen Namen mit der Länge 5 - 20 Zeichen ein";
+  } else if (!customerName.checkValidity()) {
+    errorName.innerText = "Bitte geben Sie einen gültigen Namen ein";
+  }
+}
+
+function validateEmail() {
+  if (email.validity.valueMissing) {
+    errorEmail.innerText = "Bitte füllen Sie dieses Feld aus";
+  } else if (!email.checkValidity()) {
+    errorEmail.innerText = "ungültige E-Mail Adresse";
+  }
 }
 
 function hasValidationErrors() {
