@@ -57,3 +57,6 @@ Validierung ist im Frontend dokuemnt beschrieben lektionsfolien
 Die wcag Richtlinien unbedingt auch einhalten!!
 
 Die Breite vom Formular anpassen
+
+
+Validierung durchführen zuerst normal und dann mit vue.js

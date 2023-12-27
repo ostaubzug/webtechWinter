@@ -22,7 +22,7 @@ function processRequest()
 
 function sendpersonalisedOffer($postData)
 {
-    //personalisiertes Angebot an Mail Adresse senden.
+    //send personalised offer to the email address
 }
 
 
