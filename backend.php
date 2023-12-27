@@ -39,7 +39,7 @@ function validateInput($postData)
     }
 
     //überprüfen ob Parameter korrekt gesetzt sind
-    else if (getAge($postData['date']) <= 0 || !isRealDate($postData['date'])) {
+    else if (getAgeInDays($postData['date']) <= 0 || !isRealDate($postData['date'])) {
         $error = ['error' => "Parameter 'date' ist nicht korrekt gesetzt"];
     } else if (
         $postData['phonemodel'] != 'iPhone 13' &&
@@ -130,15 +130,21 @@ function getNumberOfRequestsPerMail($email)
 
 function getAgeInYears($date)
 {
-    return getAge($date)->y;
+    $birthDate = new DateTime($date);
+    $currentDate = new DateTime('now');
+    $age = $birthDate->diff($currentDate);
+    return $age->y;
 }
 
-function getAge($date)
+function getAgeInDays($date)
 {
     $birthDate = new DateTime($date);
     $currentDate = new DateTime('now');
     $age = $birthDate->diff($currentDate);
-    return $age;
+    if ($birthDate > $currentDate) {
+        return -$age->days;
+    }
+    return $age->days;
 }
 
 
