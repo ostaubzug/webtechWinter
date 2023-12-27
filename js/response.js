@@ -7,6 +7,8 @@ function displayServerResponse() {
     htmlOutput.innerHTML = getResponseMessage(responseData);
   };
 
+  validate();
+
   xhr.open("POST", "backend.php?function=processRequest", true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(getJSONSendObject());
@@ -14,7 +16,9 @@ function displayServerResponse() {
 
 function getResponseMessage(responseData) {
   let message =
-    "Gratulation! Ihr Handy ist noch " +
+    "Gratulation " +
+    responseData.name +
+    "! Ihr Handy ist noch " +
     responseData.phoneValue +
     " CHF wert.<br>Wir werden Sie unter " +
     responseData.email +
@@ -29,10 +33,12 @@ function getJSONSendObject() {
   let phonemodel = document.getElementById("phonemodel").value;
   let email = document.getElementById("email").value;
   let kaufdatum = document.getElementById("kaufdatum").value;
+  let name = document.getElementById("name").value;
 
   return JSON.stringify({
     phonemodel: phonemodel,
     email: email,
     datetime: kaufdatum,
+    name: name,
   });
 }

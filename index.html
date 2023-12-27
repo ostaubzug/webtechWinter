@@ -96,6 +96,21 @@
         </div>
 
         <div class="w3-margin-top w3-margin-bottom">
+          <label class="w3-mobile">Ihr Name</label>
+          <input
+            class="w3-input w3-mobile"
+            type="text"
+            id="name"
+            placeholder="Max Muster"
+            required
+            maxlength="15"
+            minlength="5"
+          />
+          <p id="errorName" class="error"></p>
+          <br />
+        </div>
+
+        <div class="w3-margin-bottom">
           <label class="w3-mobile">Ihre E-Mail</label>
           <input
             class="w3-input w3-mobile"
@@ -121,7 +136,9 @@
     <section class="w3-mobile w3-container w3-margin w3-card">
       <p id="output"></p>
 
-      <script src="js/response.js">
+      <script src="js/validation.js"></script>
+      <script src="js/response.js"></script>
+      <script>
         displayServerResponse();
       </script>
     </section>

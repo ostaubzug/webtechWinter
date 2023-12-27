@@ -34,7 +34,8 @@ function getResponseJson($postData)
     $returnObject = [
         'email' => $email,
         'phoneValue' => $value,
-        'numberOfRequests' => getNumberOfRequestsPerMail($email)];
+        'numberOfRequests' => getNumberOfRequestsPerMail($email),
+        'name' => $postData['name']];
 
     return json_encode($returnObject, JSON_UNESCAPED_UNICODE);
 }

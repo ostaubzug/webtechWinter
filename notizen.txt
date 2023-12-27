@@ -60,3 +60,14 @@ Die Breite vom Formular anpassen
 
 
 Validierung durchführen zuerst normal und dann mit vue.js
+
+
+
+Das required Attribut funktioniert nicht. Dieses noch ergänzen.
+
+Ganz am Schluss nochmals alles durchkontrollieren ob es funktioniert wie es soll
+
+
+
+
+evt. unterschiedliche Validierungsmethoden nützen und dokumentieren dass ich bewusst verschiedene genommen habe
