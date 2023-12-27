@@ -37,6 +37,7 @@ function validateDate() {
   } else if (!date.checkValidity()) {
     errorDate.innerText = "Bitte geben Sie ein gültiges Datum ein";
   }
+  //Als Erweiterung könnte man das maximal mögliche Alter mit dem Smartphone Modell abgleichen.
 }
 
 function validatePhoneModel() {
@@ -49,7 +50,7 @@ function validateName() {
   if (customerName.value.length < 5 || customerName.value.length > 20) {
     errorName.innerText =
       "Geben Sie einen Namen mit der Länge 5 - 20 Zeichen ein";
-    //check if there are any numbers in the name with regex
+    //regex ausdruck um zu prüfen ob Zahlen im Namen enthalten sind
   } else if (/\d/.test(customerName.value)) {
     errorName.innerText = "Der Name darf keine Zahlen enthalten";
   } else if (!customerName.checkValidity()) {

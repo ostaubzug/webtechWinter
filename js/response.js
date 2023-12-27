@@ -34,9 +34,9 @@ function getJSONSendObject() {
   let name = document.getElementById("name").value;
 
   return JSON.stringify({
+    date: kaufdatum,
     phonemodel: phonemodel,
     email: email,
-    datetime: kaufdatum,
     name: name,
   });
 }
