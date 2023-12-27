@@ -4,7 +4,12 @@ function displayServerResponse() {
   xhr.onload = function () {
     let htmlOutput = document.getElementById("output");
     let responseData = JSON.parse(xhr.responseText);
-    htmlOutput.innerHTML = getResponseMessage(responseData);
+
+    if (xhr.status == 200) {
+      htmlOutput.innerHTML = getResponseMessage(responseData);
+    } else {
+      htmlOutput.innerText = xhr.responseText;
+    }
   };
 
   xhr.open("POST", "backend.php?function=processRequest", true);
