@@ -61,7 +61,7 @@ function validateName() {
 function validateEmail() {
   if (email.validity.valueMissing) {
     errorEmail.innerText = "Bitte füllen Sie dieses Feld aus";
-  } else if (!email.checkValidity()) {
+  } else if (!email.checkValidity() || !email.value.includes(".")) {
     errorEmail.innerText = "ungültige E-Mail Adresse";
   }
 }
