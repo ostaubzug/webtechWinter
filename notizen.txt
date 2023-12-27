@@ -71,3 +71,8 @@ Ganz am Schluss nochmals alles durchkontrollieren ob es funktioniert wie es soll
 
 
 evt. unterschiedliche Validierungsmethoden nützen und dokumentieren dass ich bewusst verschiedene genommen habe
+
+
+
+
+validierung von alex vergleichen bei ihm validiert es schon vor dem Button
