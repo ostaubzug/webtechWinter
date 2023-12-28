@@ -1,7 +1,16 @@
-function drawCanvas() {
-  let canvas = document.getElementById("canvas");
-  let context = canvas.getContext("2d");
+let timeUntilNextFrame = 1000 / 50;
+let canvas = document.getElementById("canvas");
+let context = canvas.getContext("2d");
 
+let rotationAngle = 0;
+
+function animateCanvas() {
+  setTimeout(animateCanvas, timeUntilNextFrame);
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  drawCanvas();
+}
+
+function drawCanvas() {
   //Iphone Umriss
   context.fillStyle = "black";
   roundRect(context, 0, 0, 150, 300, 10);
@@ -22,24 +31,50 @@ function drawCanvas() {
   context.lineWidth = 2;
   context.strokeStyle = "silver";
   context.stroke();
+
+  // Dollar
+  context.save();
+  context.translate(76, 130);
+  context.rotate((rotationAngle * Math.PI) / 180);
+  context.font = "bold 100px Arial";
+  context.fillStyle = "green";
+  context.textAlign = "center";
+  context.textBaseline = "middle";
+  context.fillText("$", 0, 0);
+  context.restore();
+
+  rotationAngle += 2;
+  if (rotationAngle > 360) {
+    rotationAngle = 0;
+  }
 }
 
-function roundRect(context, x, y, width, height, radius) {
+function roundRect(context, startx, starty, width, height, radius) {
   context.beginPath();
-  context.moveTo(x + radius, y);
-  context.lineTo(x + width - radius, y);
-  context.quadraticCurveTo(x + width, y, x + width, y + radius);
-  context.lineTo(x + width, y + height - radius);
+  context.moveTo(startx + radius, starty);
+  context.lineTo(startx + width - radius, starty);
   context.quadraticCurveTo(
-    x + width,
-    y + height,
-    x + width - radius,
-    y + height
+    startx + width,
+    starty,
+    startx + width,
+    starty + radius
   );
-  context.lineTo(x + radius, y + height);
-  context.quadraticCurveTo(x, y + height, x, y + height - radius);
-  context.lineTo(x, y + radius);
-  context.quadraticCurveTo(x, y, x + radius, y);
+  context.lineTo(startx + width, starty + height - radius);
+  context.quadraticCurveTo(
+    startx + width,
+    starty + height,
+    startx + width - radius,
+    starty + height
+  );
+  context.lineTo(startx + radius, starty + height);
+  context.quadraticCurveTo(
+    startx,
+    starty + height,
+    startx,
+    starty + height - radius
+  );
+  context.lineTo(startx, starty + radius);
+  context.quadraticCurveTo(startx, starty, startx + radius, starty);
   context.closePath();
   context.fill();
 }
