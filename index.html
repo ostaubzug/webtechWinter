@@ -11,7 +11,7 @@
     <script src="js/canvas.js" defer></script>
   </head>
 
-  <body>
+  <body onload="drawCanvas()">
     <section id="navigation">
       <nav class="w3-dark-gray w3-mobile w3-top">
         <a
@@ -47,7 +47,7 @@
       <div class="w3-padding w3-mobile">
         <img src="img/hq.png" alt="phone picture" class="w3-image" />
       </div>
-      <canvas id="canvas" width="300" height="300"></canvas>
+      <canvas id="canvas" width="300" height="300" class="canvas"></canvas>
     </section>
 
     <section id="eingabebereich">
