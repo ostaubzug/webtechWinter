@@ -2,26 +2,26 @@ function drawCanvas() {
   let canvas = document.getElementById("canvas");
   let context = canvas.getContext("2d");
 
+  //Iphone Umriss
   context.fillStyle = "black";
   roundRect(context, 0, 0, 150, 300, 10);
 
+  //Bildschirm
   context.fillStyle = "lightgrey";
   context.fillRect(10, 30, 130, 210);
 
+  //Lautsprecher
   context.fillStyle = "lightgrey";
   roundRect(context, 45, 15, 60, 6, 3);
 
+  //Homebutton
   context.beginPath();
-  context.arc(100, 300, 15, 0, 2 * Math.PI, false);
+  context.arc(76, 275, 15, 0, 2 * Math.PI, false);
   context.fillStyle = "grey";
   context.fill();
   context.lineWidth = 2;
-  context.strokeStyle = "#003300";
+  context.strokeStyle = "silver";
   context.stroke();
-
-  //138 * 67
-  //276 * 134
-  //300 * 150
 }
 
 function roundRect(context, x, y, width, height, radius) {
