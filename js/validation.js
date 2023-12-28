@@ -29,7 +29,7 @@ function clearAllValidationErrors() {
 }
 
 function validateDate() {
-  var now = new Date();
+  let now = new Date();
   if (date.validity.valueMissing) {
     errorDate.innerText = "Bitte füllen Sie dieses Feld aus";
   } else if (new Date(date.value) > now) {
