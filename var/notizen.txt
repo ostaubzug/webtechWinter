@@ -26,6 +26,8 @@ Ein cookie definieren das die Veränderung vom Preis verglichen mit dem letzten 
 Ajax Fehlerbehandlung wie in den Folien beschrieben
 Unterschied Get Post und so
 
+Navigation fixen
+
 
 Eingabeprüfung ist auch für cookies relevant
 
