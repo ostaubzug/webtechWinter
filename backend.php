@@ -20,6 +20,7 @@ function processRequest()
 
     if (validateInput($postData)) {
         sendpersonalisedOffer($postData);
+        saveInDatabase($postData);
         echo getJsonResponse($postData);
     }
 }
@@ -158,6 +159,35 @@ function isRealDate($date)
     }
     list($year, $month, $day) = explode('-', $date);
     return checkdate($month, $day, $year);
+}
+
+
+function saveInDatabase($postData)
+{
+    $pdDate = $postData['date'];
+    $pdPhoneModel = $postData['phonemodel'];
+    $pdName = $postData['name'];
+    $pdEmail = $postData['email'];
+
+    $conn = mysqli_connect("localhost", "root", "", "phoneshop");
+
+    if (!$conn) {
+        echo json_encode(['error' => "DB Connection failed"]);
+        exit;
+    }
+
+
+    $query = "INSERT INTO `phoneshop`.`customers` (`buydate`, `phonemodel`, `name`, `email`) VALUES (?, ?, ?, ?)";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, 'ssss', $pdDate, $pdPhoneModel, $pdName, $pdEmail);
+    $res = mysqli_stmt_execute($stmt);
+
+
+    if (!$res) {
+        echo json_encode(['error' => mysqli_stmt_get_result($stmt)]);
+    }
+
+
 }
 
 ?>

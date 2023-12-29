@@ -73,4 +73,12 @@ Ganz am Schluss nochmals alles durchkontrollieren ob es funktioniert wie es soll
 html canvas setzen
 
 
+vue.js evt. den button disablen bis es gut ausgefüllt ist?
+oder macht das evt. keinen Sinn
 
+
+
+Datenbank wird im jetzigen Schema gar nicht erzeugt !!  Achtung !!
+--> DB schema noch alles richtig stellen !
+
+prepared statements nutzen evt. löst das mein Problem
