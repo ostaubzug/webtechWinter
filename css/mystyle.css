@@ -19,22 +19,19 @@ p {
   margin-bottom: 20px;
 }
 
-#information img {
-  margin-left: 10%;
-  margin-right: auto;
-  width: 60%;
+img {
+  width: 50%;
+  margin: auto;
   max-width: 100%;
   height: auto;
-  margin: 0 auto;
   border-radius: 5px;
-  vertical-align: middle;
+  display: block;
 }
 
-.canvas {
+canvas {
+  display: block;
   margin: auto;
-  vertical-align: middle;
-  padding: 10px;
-  border: 3px;
+  margin-top: 40px;
 }
 
 .error {
