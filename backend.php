@@ -199,7 +199,6 @@ function saveInDatabase($postData)
         mysqli_stmt_bind_param($stmt, 's', $postData['email']);
         mysqli_stmt_execute($stmt);
         $res = mysqli_stmt_get_result($stmt);
-        //spaltenname COUNT(email)
         return mysqli_fetch_assoc($res)['COUNT(email)'];
 
     }
