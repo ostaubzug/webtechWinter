@@ -35,9 +35,11 @@ function getResponseMessage(responseData) {
     responseData.phoneValue +
     " CHF wert.<br>Wir werden Sie unter " +
     responseData.email +
-    " kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br><br> Wir haben bereits " +
+    " kontaktieren, um Ihnen ein persönliches Angebot zu unterbreiten.<br><br> In dieser Session wurden bereits " +
     responseData.numberOfRequests +
-    " Angebote an Ihre Mail Adresse zugestellt.";
+    " Angebote an Ihre Mail Adresse zugestellt. Insgesamt sind es " +
+    responseData.numberOfTotalRequests +
+    " Angebote welche an Ihre Adresse versendet wurden.";
 
   return message;
 }

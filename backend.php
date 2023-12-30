@@ -84,7 +84,8 @@ function getJsonResponse($postData)
     $returnObject = [
         'email' => $email,
         'phoneValue' => $value,
-        'numberOfRequests' => getNumberOfRequestsPerMail($email),
+        'numberOfRequests' => getNumberOfRequestsPerMailPerSession($email),
+        'numberOfTotalRequests' => getNumberOfTotalRequestsPerMailFromDB($postData),
         'name' => $postData['name']];
 
     return json_encode($returnObject, JSON_UNESCAPED_UNICODE);
@@ -116,7 +117,7 @@ function getDeprecationFactor($date)
 }
 
 
-function getNumberOfRequestsPerMail($email)
+function getNumberOfRequestsPerMailPerSession($email)
 {
     //dots in the cookieName are making problems So I remove them
     $sanitizedEmail = str_replace(".", "", $email);
@@ -172,22 +173,36 @@ function saveInDatabase($postData)
     $conn = mysqli_connect("localhost", "root", "", "phoneshop");
 
     if (!$conn) {
-        echo json_encode(['error' => "DB Connection failed"]);
+        echo json_encode(['DB error' => "DB Connection failed"]);
         exit;
     }
-
 
     $query = "INSERT INTO `phoneshop`.`customers` (`buydate`, `phonemodel`, `name`, `email`) VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
     mysqli_stmt_bind_param($stmt, 'ssss', $pdDate, $pdPhoneModel, $pdName, $pdEmail);
     $res = mysqli_stmt_execute($stmt);
 
-
     if (!$res) {
-        echo json_encode(['error' => mysqli_stmt_get_result($stmt)]);
+        echo json_encode(['DB error' => mysqli_stmt_get_result($stmt)]);
     }
 
+    function getNumberOfTotalRequestsPerMailFromDB($postData)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "phoneshop");
 
+        if (!$conn) {
+            echo json_encode(['DB error' => "DB Connection failed"]);
+            exit;
+        }
+        $query = "SELECT COUNT(email) FROM customers WHERE email = ?;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, 's', $postData['email']);
+        mysqli_stmt_execute($stmt);
+        $res = mysqli_stmt_get_result($stmt);
+        //spaltenname COUNT(email)
+        return mysqli_fetch_assoc($res)['COUNT(email)'];
+
+    }
 }
 
 ?>
